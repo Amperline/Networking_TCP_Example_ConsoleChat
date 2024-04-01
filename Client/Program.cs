@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
@@ -26,7 +27,7 @@ namespace AmperChatClient
 
             TcpClient socket = new TcpClient();
             Console.WriteLine("Start connection!");
-            socket.Connect("00.00.00.00", 1111);
+            socket.Connect(Dns.GetHostAddresses(Dns.GetHostName()), 4097);
             NetworkStream stream = socket.GetStream();
             if (socket.Connected) 
             {
